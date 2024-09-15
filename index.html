@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <!-- Title and content inputs unified -->
+        <div class="add">
+            <input type="text" class="note-title" placeholder="Note Title">
+            <textarea class="note-content" placeholder="Write your note here..."></textarea>
+        </div>
+        <!-- Add Button -->
+        <div class="add">
+            <button onclick="Action()" class="add-btn">Add</button>
+        </div>
+        <!-- Displaying the notes -->
+        <div class="cards-container">
+
+        </div>
+        <div class="note_card">
+            <div class="delete">
+                <button class="delete-btn">Delete</button>
+            </div>
+            <div class="notes">
+                <h1>YOOO</h1>
+                <p>This is where the note content will go.</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    
+    function Action() {
+        const title = document.querySelector(".note-title").value;
+        const content = document.querySelector(".note-content").value;
+        console.log(title, content);
+        //ADDING NEW CARD
+        const newCard = document.createElement('div');
+        newCard.classList.add('note_card'); // Apply the same class for styling
+        //CREATING NEW H1 AND P FOR TITLE AND CONTENT
+        const cardTitle = document.createElement('h1');
+        cardTitle.textContent = title;
+        newCard.appendChild(cardTitle);
+
+        const cardContent = document.createElement('p');
+        cardTitle.appendChild(cardContent);
+        cardContent.textContent = content;
+
+        //GET THE NEW CARD IN HTML
+        const cardsContainer = document.querySelector('.cards-container');
+        cardsContainer.appendChild(newCard);
+
+        //TO CLEAR THE INPUT FIELD
+        document.querySelector('.note-title').value = '';
+        document.querySelector('.note-content').value = '';
+
+        //DELETE BUTTON
+        const deleteDiv = document.createElement('div');
+        deleteDiv.classList.add('delete');
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-btn');
+        deleteDiv.appendChild(deleteButton);
+        newCard.appendChild(deleteDiv);
+
+    }
+    document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('delete-btn')) {
+        // Find the closest card element and remove it
+        const card = event.target.closest('.note_card');
+        if (card) {
+            card.remove();
+        }
+    }
+    });
+</script>
+
+</html>
