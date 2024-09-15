@@ -1,1 +1,3 @@
 # Notes-App
+SIMPLE NOTES APP
+!!!WORK IN PROGRESS!!!
